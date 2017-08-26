@@ -7,15 +7,16 @@ public:
 // static Battery* Instance();
     Battery() :
         _battery_path("/sys/class/power_supply/BAT0/"),
-        _energy_now(_battery_path + "energy_now"),
-        _power_now(_battery_path + "power_now")
+        _capacity(_battery_path + "capacity"),
+        _status(_battery_path + "status")
     {}
     ~Battery() {}
     int getChargePct();
+    std::string getChargingStatus();
 private:
     std::string _battery_path;
-    std::string _energy_now;
-    std::string _power_now;
+    std::string _capacity;
+    std::string _status;
 
     std::string getOneRowFileContent(std::string filepath);
 };

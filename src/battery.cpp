@@ -18,6 +18,18 @@ std::string Battery::getOneRowFileContent(std::string filepath)
 
 int Battery::getChargePct()
 {
-    std::cout << getOneRowFileContent(_energy_now) << std::endl;
-    return 0;
+    return stoi(getOneRowFileContent(Battery::_capacity));
+}
+
+std::string Battery::getChargingStatus()
+{
+    std::string status = getOneRowFileContent(Battery::_status);
+    if (status == "Unknown")
+    {
+        return "Charging";
+    }
+    else
+    {
+        return status;
+    }
 }

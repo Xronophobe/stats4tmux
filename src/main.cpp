@@ -4,5 +4,6 @@
 int main()
 {
     Battery battery;
-    battery.getChargePct();
+    std::cout << battery.getChargePct() << std::endl;
+    std::cout << battery.getChargingStatus() << std::endl;
 }
