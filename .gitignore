@@ -1,1 +1,6 @@
 *.out
+stats4tmux
+cmake_install.cmake
+Makefile
+CMakeFiles
+CMakeCache.txt
