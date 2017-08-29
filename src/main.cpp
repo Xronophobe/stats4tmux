@@ -5,7 +5,9 @@
 int main()
 {
     Battery battery;
-    std::cout << battery.getChargingStatus() << std::endl;
-    std::cout << utils::printInOneDigit(battery.getChargePct()) << std::endl;
+    std::cout <<
+        utils::printInOneDigit(battery.getChargePct(), "tmux") <<
+        std::endl;
+    //std::cout << "#[fg=red]#[bg=black] helo" <<std::endl;
 }
 
