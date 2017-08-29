@@ -4,7 +4,7 @@
 
 namespace utils
 {
-    std::vector<std::string> fgColors
+    std::vector<std::string> ansiFgColors
     {
         std::string("31"),  // red
         std::string("33"),  // yellow
@@ -13,19 +13,38 @@ namespace utils
         std::string("36")   // cyan
     };
 
-    std::string printInOneDigit(int number)
+    std::vector<std::string> tmuxFgColors
+    {
+        std::string("red"),
+        std::string("yellow"),
+        std::string("white"),
+        std::string("green"),
+        std::string("cyan")
+    };
+
+    std::string printInOneDigit(int number, std::string format)
     {
         int tens = number / 10;
         int ones = number % 10;
 
-        std::string result(
-                "\033[" +
-                fgColors[ones/2] +
+        if (format == "ansi")
+        {
+            return (
+                "\033[40;" +
+                ansiFgColors[ones/2] +
                 'm' +
                 std::to_string(tens) +
                 "\033[0m"
+            );
+        }
+
+        return (
+            "#[bg=black]#[fg=" +
+            tmuxFgColors[ones/2] +
+            "]" +
+            std::to_string(tens)
         );
-        return result;
+
     }
 
     std::string getOneRowFileContent(std::string filepath)
