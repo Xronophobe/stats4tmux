@@ -21,8 +21,5 @@ std::string Battery::getChargingStatus()
     {
         return "Charging";
     }
-    else
-    {
-        return status;
-    }
+    return status;
 }
