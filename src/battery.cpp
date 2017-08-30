@@ -1,8 +1,13 @@
 #include "utils.hpp"
 #include "battery.hpp"
-#include <iostream>
-#include <string>
-#include <fstream>
+
+Battery::Battery() :
+        _battery_path("/sys/class/power_supply/BAT0/"),
+        _capacity(_battery_path + "capacity"),
+        _status(_battery_path + "status")
+{}
+
+Battery::~Battery() {}
 
 int Battery::getChargePct()
 {
