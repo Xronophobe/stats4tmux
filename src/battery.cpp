@@ -2,9 +2,9 @@
 #include "battery.hpp"
 
 Battery::Battery() :
-        _battery_path("/sys/class/power_supply/BAT0/"),
-        _capacity(_battery_path + "capacity"),
-        _status(_battery_path + "status")
+        _battery_path { "/sys/class/power_supply/BAT0/" },
+        _capacity { _battery_path + "capacity" },
+        _status { _battery_path + "status" }
 {}
 
 Battery::~Battery() {}
@@ -16,7 +16,7 @@ int Battery::getChargePct()
 
 std::string Battery::getChargingStatus()
 {
-    std::string status = utils::getOneRowFileContent(Battery::_status);
+    std::string status { utils::getOneRowFileContent(Battery::_status) };
     if (status == "Unknown")
     {
         return "Charging";
