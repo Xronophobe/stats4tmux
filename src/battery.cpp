@@ -1,5 +1,5 @@
-#include "utils.hpp"
-#include "battery.hpp"
+#include <utils.hpp>
+#include <battery.hpp>
 
 Battery::Battery() :
         _battery_path { "/sys/class/power_supply/BAT0/" },
